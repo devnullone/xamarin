@@ -1,3 +1,5 @@
+using Syncfusion.SfRotator.XForms.iOS;
+using Syncfusion.XForms.iOS.Graphics;
 using Syncfusion.SfRating.XForms.iOS;
 using Syncfusion.ListView.XForms.iOS;
 using Syncfusion.XForms.iOS.ComboBox;
@@ -12,6 +14,8 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+
+using Firebase;
 
 namespace xamarin.iOS
 {
@@ -31,6 +35,8 @@ namespace xamarin.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            Core.Init();
+            SfRotatorRenderer.Init();
             SfRatingRenderer.Init();
             SfListViewRenderer.Init();
             SfComboBoxRenderer.Init();
@@ -41,6 +47,7 @@ namespace xamarin.iOS
             SfGradientViewRenderer.Init();
             SfBorderRenderer.Init();
             SfButtonRenderer.Init();
+            Firebase.Core.App.Configure();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

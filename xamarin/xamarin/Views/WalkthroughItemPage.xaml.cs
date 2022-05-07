@@ -1,25 +1,21 @@
 ﻿using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
+
 namespace xamarin.Views
 {
     /// <summary>
-    /// Page to login with user name and password
+    /// Page to display on-boarding gradient with animation
     /// </summary>
     [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage
+    public partial class WalkthroughItemPage
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="LoginPage" /> class.
+        /// Initializes a new instance of the <see cref="WalkthroughItemPage" /> class.
         /// </summary>
-        public LoginPage()
+        public WalkthroughItemPage()
         {
             this.InitializeComponent();
-        }
-
-        private void SfButton_Clicked(object sender, System.EventArgs e)
-        {
-
         }
     }
 }

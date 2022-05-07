@@ -1,7 +1,12 @@
-﻿using xamarin.Validators;
+﻿using Android.Content.Res;
+using System;
+using xamarin.Auth;
+using xamarin.Validators;
 using xamarin.Validators.Rules;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using xamarin.Views;
 
 namespace xamarin.ViewModels
 {
@@ -116,22 +121,55 @@ namespace xamarin.ViewModels
         /// Invoked when the Log In button is clicked.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void LoginClicked(object obj)
+        private async void LoginClicked(object obj)
         {
-            if (this.AreFieldsValid())
+            try
             {
-                // Do Something
+                if (this.AreFieldsValid())
+                {
+                    // Firebase Authentification based to credentials
+                    var auth = DependencyService.Get<IFirebaseAuthentication>();
+                    var user = await auth.LoginWithEmailAndPassword(Email.Value, Password.Value);
+                    
+                    var a =  new Command(async () => {
+
+                        await Application.Current.MainPage.Navigation.PushAsync(new Page1());
+                    });
+
+                    if (user != null)
+                    {
+                        ClearAuthData();
+                        await Shell.Current.GoToAsync("//Page1");
+                    }
+                    else
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Error", "Email ou mot de passe incorrect.", "Okay");
+                    }
+                }
             }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("ErrorStatus", "" + ex.Message, "Ok");
+            }
+            
         }
+
+        private void Page1()
+        {
+
+        }
+        private void ClearAuthData()
+        {
+            Email.Value = Password.Value = string.Empty;
+        }
+
 
         /// <summary>
         /// Invoked when the Sign Up button is clicked.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void SignUpClicked(object obj)
-        {
-            // Do Something
-        }
+        private async void SignUpClicked(object obj)
+                => await Shell.Current.GoToAsync("//SignUpPage");
 
         /// <summary>
         /// Invoked when the Forgot Password button is clicked.

@@ -1,4 +1,6 @@
-﻿using xamarin.Validators;
+﻿using System;
+using xamarin.Auth;
+using xamarin.Validators;
 using xamarin.Validators.Rules;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -119,9 +121,9 @@ namespace xamarin.ViewModels
         /// </summary>
         private void AddValidationRules()
         {
-            this.Name.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Name Required" });
-            this.Password.Item1.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Password Required" });
-            this.Password.Item2.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Re-enter Password" });
+            this.Name.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Pseudo Requi" });
+            this.Password.Item1.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Password Requi" });
+            this.Password.Item2.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Re-taper Password" });
         }
 
         /// <summary>
@@ -137,12 +139,36 @@ namespace xamarin.ViewModels
         /// Invoked when the Sign Up button is clicked.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void SignUpClicked(object obj)
+        private  async void SignUpClicked(object obj)
         {
-            if (this.AreFieldsValid())
+            try
             {
-                // Do something
+                if (this.AreFieldsValid())
+                {
+                    // Verifier  si les 
+                    var auth = DependencyService.Resolve<IFirebaseAuthentication>();
+
+                    if (Password.Item1.Value == Password.Item2.Value)
+                    {
+                        if (await auth.RegisterWithEmailAndPassword(Name.Value, Email.Value, Password.Item2.Value))
+                        {
+                            await Shell.Current.GoToAsync("//LoginPage");
+                        }
+                        else
+                            Console.WriteLine("Impossible d'enregistrer un nouvelle utilisateur!");
+                    }
+                    else
+                        //await Application.Current.MainPage.DisplayAlert("Error", "Vos mots de passe ne correspondent pas.", "Ok");
+                        Console.WriteLine("Vos mots de passe ne correspondent pas.");
+
+                }
             }
+            catch (Exception ex)
+            {
+
+                await Application.Current.MainPage.DisplayAlert("ErrorStatus", "" + ex.Message, "Ok");
+            }
+            
         }
 
         #endregion

@@ -82,6 +82,10 @@ namespace xamarin.ViewModels
             this.Email.Validations.Add(new IsValidEmailRule<string> { ValidationMessage = "Invalid Email" });
         }
 
+        public void LoadHomeview()
+        {
+
+        }
         #endregion
     }
 }

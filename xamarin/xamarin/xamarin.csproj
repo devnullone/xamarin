@@ -22,18 +22,27 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FirebaseDatabase.net" Version="4.0.7" />
+    <PackageReference Include="Plugin.CloudFirestore" Version="4.1.0" />
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="20.1.0.52" />
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="20.1.0.52" />
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="20.1.0.52" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="20.1.0.52" />
     <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="20.1.0.52" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />  
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRotator" Version="20.1.0.52" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Services\" />
+    <Folder Include="ViewModels\Auth\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Mono.Android">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v12.0\Mono.Android.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
@@ -119,6 +128,12 @@
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SignUpPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\WalkthroughItemPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\WelcomePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="xamarin.Views.WalkthroughItemPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
+    NavigationPage.HasNavigationBar="False">
+    <ContentView.Content>
+        <StackLayout
+            BackgroundColor="Transparent"
+            Spacing="0"
+            VerticalOptions="Center">
+
+            <!--  Image for display svg image  -->
+            <Image
+                BackgroundColor="Transparent"
+                HeightRequest="{core:OnPlatformOrientationDoubleValue Default=300,
+                                                                      AndroidPhonePortrait=200,
+                                                                      AndroidPhoneLandscape=140,
+                                                                      iOSPhonePortrait=200,
+                                                                      iOSPhoneLandscape=140}"
+                Opacity="{OnPlatform Default=0,
+                                     UWP=1}"
+                Source="{Binding ImagePath}"
+                VerticalOptions="Center"
+                WidthRequest="{x:OnIdiom Phone=200,
+                                         Desktop=300,
+                                         Tablet=300}" />
+
+            <!--  Label to display header  -->
+            <Label
+                Margin="0,30,0,8"
+                FontSize="14"
+                LineHeight="{OnPlatform Android=1.25,
+                                        Default=-1}"
+                Opacity="{OnPlatform Default=0,
+                                     UWP=1}"
+                Style="{StaticResource TitleLabelStyle}"
+                Text="{Binding Header}"
+                TextColor="{DynamicResource Gray-White}"
+                TranslationY="{OnPlatform Default=60,
+                                          UWP=0}"
+                VerticalTextAlignment="Center" />
+
+            <!--  Label to display content  -->
+            <Label
+                FontSize="16"
+                LineHeight="{OnPlatform Android=1.25,
+                                        Default=-1}"
+                Opacity="{OnPlatform Default=0,
+                                     UWP=1}"
+                Style="{StaticResource DescriptionLabelStyle}"
+                Text="{Binding Content}"
+                TextColor="{DynamicResource Gray-White}"
+                TranslationY="{OnPlatform Default=60,
+                                          UWP=0}" />
+
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

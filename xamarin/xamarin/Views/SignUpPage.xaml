@@ -12,7 +12,7 @@
     xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
     xmlns:local="clr-namespace:xamarin.Views"
     xmlns:viewModel="clr-namespace:xamarin.ViewModels"
-    Title="Sign Up"
+    Title=""
     BackgroundImageSource="{core:OnPlatformOrientationStringValue Default=LoginBackground.png,
                                                                   iOSPhoneLandscape=LoginBackground-Landscape.png,
                                                                   iOSTabletLandscape=LoginBackground-Landscape.png}"
@@ -60,17 +60,17 @@
 
                         <!--  Label to display the title of this page  -->
                         <Label
-                            FontSize="20"
+                            FontSize="40"
                             Style="{StaticResource TitleLabelStyle}"
-                            Text="Sign Up"
+                            Text="S'inscrire"
                             TextColor="{DynamicResource Gray-White}" />
 
                         <!--  Label to display the description of this page  -->
-                        <Label
+                        <!--<Label
                             Margin="0,-16,0,8"
                             Style="{StaticResource DescriptionLabelStyle}"
                             Text="Create an account to start doing more"
-                            TextColor="{DynamicResource Gray-White}" />
+                            TextColor="{DynamicResource Gray-White}" />-->
 
                         <StackLayout>
                             <!--  Entry to get username from user  -->
@@ -81,7 +81,7 @@
                                         x:Name="NameEntry"
                                         Margin="15,0"
                                         HeightRequest="40"
-                                        Placeholder="Name"
+                                        Placeholder="Pseudo"
                                         PlaceholderColor="{StaticResource EntryPlaceholderColor}"
                                         Style="{StaticResource BorderlessEntryStyle}"
                                         Text="{Binding Name.Value}"
@@ -164,7 +164,7 @@
                                         Margin="15,0"
                                         HeightRequest="40"
                                         IsPassword="true"
-                                        Placeholder="Confirm Password"
+                                        Placeholder="Retaper Password"
                                         PlaceholderColor="{StaticResource EntryPlaceholderColor}"
                                         Style="{StaticResource BorderlessEntryStyle}"
                                         Text="{Binding Password.Item2.Value}"
@@ -199,7 +199,7 @@
                             Command="{Binding SignUpCommand}"
                             HorizontalOptions="FillAndExpand"
                             Style="{StaticResource GradientButtonStyle}"
-                            Text="REGISTER" />
+                            Text="S'INSCRIRE" />
                     </StackLayout>
 
                     <StackLayout
@@ -217,14 +217,14 @@
 
                         <Label
                             Style="{StaticResource DescriptionLabelStyle}"
-                            Text="Already have an account?"
+                            Text="Avez-vous déjà un compte?"
                             TextColor="{DynamicResource Gray-White}"
                             VerticalTextAlignment="Center" />
 
                         <buttons:SfButton
                             Command="{Binding LoginCommand}"
                             Style="{StaticResource TransparentButtonStyle}"
-                            Text="Log In"
+                            Text="Se Connecter"
                             TextColor="{DynamicResource PrimaryColor}" />
 
                     </StackLayout>
@@ -232,7 +232,7 @@
             </ScrollView>
 
             <!--  Close button  -->
-            <buttons:SfButton
+            <!--<buttons:SfButton
                 Margin="8"
                 Command="{Binding BackButtonCommand}"
                 FontSize="20"
@@ -240,7 +240,7 @@
                 Style="{StaticResource IconButtonStyle}"
                 Text="{StaticResource Close}"
                 TextColor="{DynamicResource Gray-White}"
-                VerticalOptions="Start" />
+                VerticalOptions="Start" />-->
 
         </Grid>
     </ContentPage.Content>
