@@ -194,20 +194,17 @@ namespace xamarin.ViewModels
         /// Invoked when the Skip button is clicked.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void Skip(object obj)
-        {
-            MoveToNextPage();
-        }
+        private async void Skip(object obj) => await Shell.Current.GoToAsync("//SignUpPage");
 
         /// <summary>
         /// Invoked when the Done button is clicked.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void Next(object obj)
+        private async void Next(object obj)
         {
             if (this.ValidateAndUpdateSelectedIndex(this.Boardings.Count))
             {
-                MoveToNextPage();
+                await Shell.Current.GoToAsync("//SignUpPage");
             }
         }
 

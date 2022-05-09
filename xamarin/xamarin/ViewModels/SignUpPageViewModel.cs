@@ -130,10 +130,8 @@ namespace xamarin.ViewModels
         /// Invoked when the Log in button is clicked.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void LoginClicked(object obj)
-        {
-            // Do something
-        }
+        private async void LoginClicked(object obj)
+                => await Shell.Current.GoToAsync("//LoginPage");
 
         /// <summary>
         /// Invoked when the Sign Up button is clicked.

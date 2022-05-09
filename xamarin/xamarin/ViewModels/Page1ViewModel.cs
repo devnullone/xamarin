@@ -16,7 +16,7 @@ namespace xamarin.ViewModels
         private async void UtilisateurEstIlConnecter()
         {
             var isAuth = DependencyService.Resolve<IFirebaseAuthentication>();
-            if (isAuth.IsLoggedIn())
+            if (!isAuth.IsLoggedIn())
             {
                 await Xamarin.Forms.Shell.Current.GoToAsync("//LoginPage");
             }

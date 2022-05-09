@@ -230,18 +230,6 @@
                     </StackLayout>
                 </StackLayout>
             </ScrollView>
-
-            <!--  Close button  -->
-            <!--<buttons:SfButton
-                Margin="8"
-                Command="{Binding BackButtonCommand}"
-                FontSize="20"
-                HorizontalOptions="End"
-                Style="{StaticResource IconButtonStyle}"
-                Text="{StaticResource Close}"
-                TextColor="{DynamicResource Gray-White}"
-                VerticalOptions="Start" />-->
-
         </Grid>
     </ContentPage.Content>
 </ContentPage>

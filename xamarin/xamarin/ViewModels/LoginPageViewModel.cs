@@ -131,10 +131,10 @@ namespace xamarin.ViewModels
                     var auth = DependencyService.Get<IFirebaseAuthentication>();
                     var user = await auth.LoginWithEmailAndPassword(Email.Value, Password.Value);
                     
-                    var a =  new Command(async () => {
+                    //var a =  new Command(async () => {
 
-                        await Application.Current.MainPage.Navigation.PushAsync(new Page1());
-                    });
+                    //    await Application.Current.MainPage.Navigation.PushAsync(new Page1());
+                    //});
 
                     if (user != null)
                     {
@@ -175,10 +175,8 @@ namespace xamarin.ViewModels
         /// Invoked when the Forgot Password button is clicked.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void ForgotPasswordClicked(object obj)
-        {
-            // Do something
-        }
+        private async void ForgotPasswordClicked(object obj)
+                => await Shell.Current.GoToAsync("//ForgotPasswordPageWithGradient");
 
         /// <summary>
         /// Invoked when social media login button is clicked.
