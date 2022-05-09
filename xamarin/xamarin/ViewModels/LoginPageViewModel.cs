@@ -123,18 +123,14 @@ namespace xamarin.ViewModels
         /// <param name="obj">The Object</param>
         private async void LoginClicked(object obj)
         {
-            try
+
+            if (this.AreFieldsValid())
             {
-                if (this.AreFieldsValid())
+                try
                 {
                     // Firebase Authentification based to credentials
                     var auth = DependencyService.Get<IFirebaseAuthentication>();
                     var user = await auth.LoginWithEmailAndPassword(Email.Value, Password.Value);
-                    
-                    //var a =  new Command(async () => {
-
-                    //    await Application.Current.MainPage.Navigation.PushAsync(new Page1());
-                    //});
 
                     if (user != null)
                     {
@@ -146,18 +142,13 @@ namespace xamarin.ViewModels
                         await Application.Current.MainPage.DisplayAlert("Error", "Email ou mot de passe incorrect.", "Okay");
                     }
                 }
+                catch (Exception ex)
+                {
+                    await Application.Current.MainPage.DisplayAlert("ErrorStatus", "" + ex.Message, "Ok");
+                }
             }
-            catch (Exception ex)
-            {
-                await Application.Current.MainPage.DisplayAlert("ErrorStatus", "" + ex.Message, "Ok");
-            }
-            
         }
 
-        private void Page1()
-        {
-
-        }
         private void ClearAuthData()
         {
             Email.Value = Password.Value = string.Empty;
