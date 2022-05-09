@@ -139,32 +139,23 @@ namespace xamarin.ViewModels
         /// <param name="obj">The Object</param>
         private  async void SignUpClicked(object obj)
         {
-            try
+            if (this.AreFieldsValid())
             {
-                if (this.AreFieldsValid())
-                {
-                    // Verifier  si les 
-                    var auth = DependencyService.Resolve<IFirebaseAuthentication>();
+                var auth = DependencyService.Resolve<IFirebaseAuthentication>();
 
-                    if (Password.Item1.Value == Password.Item2.Value)
+                if (Password.Item1.Value == Password.Item2.Value)
+                {
+                    if (await auth.RegisterWithEmailAndPassword(Name.Value, Email.Value, Password.Item2.Value))
                     {
-                        if (await auth.RegisterWithEmailAndPassword(Name.Value, Email.Value, Password.Item2.Value))
-                        {
-                            await Shell.Current.GoToAsync("//LoginPage");
-                        }
-                        else
-                            Console.WriteLine("Impossible d'enregistrer un nouvelle utilisateur!");
+                        await Shell.Current.GoToAsync("//LoginPage");
                     }
                     else
-                        //await Application.Current.MainPage.DisplayAlert("Error", "Vos mots de passe ne correspondent pas.", "Ok");
-                        Console.WriteLine("Vos mots de passe ne correspondent pas.");
-
+                        Console.WriteLine("Impossible d'enregistrer un nouvelle utilisateur!");
                 }
-            }
-            catch (Exception ex)
-            {
+                else
+                    //await Application.Current.MainPage.DisplayAlert("Error", "Vos mots de passe ne correspondent pas.", "Ok");
+                    Console.WriteLine("Vos mots de passe ne correspondent pas.");
 
-                await Application.Current.MainPage.DisplayAlert("ErrorStatus", "" + ex.Message, "Ok");
             }
             
         }

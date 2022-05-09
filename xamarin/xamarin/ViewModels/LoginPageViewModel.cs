@@ -126,32 +126,19 @@ namespace xamarin.ViewModels
 
             if (this.AreFieldsValid())
             {
-                try
-                {
-                    // Firebase Authentification based to credentials
-                    var auth = DependencyService.Get<IFirebaseAuthentication>();
-                    var user = await auth.LoginWithEmailAndPassword(Email.Value, Password.Value);
+                // Firebase Authentification based to credentials
+                var auth = DependencyService.Get<IFirebaseAuthentication>();
 
-                    if (user != null)
-                    {
-                        ClearAuthData();
-                        await Shell.Current.GoToAsync("//Page1");
-                    }
-                    else
-                    {
-                        await Application.Current.MainPage.DisplayAlert("Error", "Email ou mot de passe incorrect.", "Okay");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    await Application.Current.MainPage.DisplayAlert("ErrorStatus", "" + ex.Message, "Ok");
-                }
+                await auth.LoginWithEmailAndPassword(Email.Value, Password.Value);
+
+                //ClearAuthData();
+                await Shell.Current.GoToAsync("//Page1");
             }
-        }
-
-        private void ClearAuthData()
-        {
-            Email.Value = Password.Value = string.Empty;
+            else
+            {
+                Console.WriteLine("Impossible de se Loger");
+            }
+                
         }
 
 
