@@ -12,23 +12,23 @@ namespace xamarin.Droid.Auth
     {
         public async Task<UserModel> LoginWithEmailAndPassword(string email, string password)
         {
-            try
+            //try
+            //{
+            var firebaseUser = await FirebaseAuth.Instance.SignInWithEmailAndPasswordAsync(email, password);
+            var token = await firebaseUser.User.GetIdToken(false).AsAsync<GetTokenResult>();
+            var user = new UserModel()
             {
-                var firebaseUser = await FirebaseAuth.Instance.SignInWithEmailAndPasswordAsync(email, password);
-                var token = await firebaseUser.User.GetIdToken(false).AsAsync<GetTokenResult>();
-                var user = new UserModel()
-                {
-                    DisplayName = firebaseUser.User.DisplayName,
-                    Email = firebaseUser.User.Email,
-                    Token = token.Token
-                };
-                return user;
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
-                return null;
-            }
+                DisplayName = firebaseUser.User.DisplayName,
+                Email = firebaseUser.User.Email,
+                Token = token.Token
+            };
+            return user;
+            //}
+            //catch (Exception ex)
+            //{
+            //    Debug.WriteLine(ex);
+            //    //return null;
+            //}
         }
 
         public async Task<bool> RegisterWithEmailAndPassword(string username, string email, string password)

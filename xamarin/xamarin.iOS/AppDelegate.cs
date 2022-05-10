@@ -5,7 +5,6 @@ using Syncfusion.ListView.XForms.iOS;
 using Syncfusion.XForms.iOS.ComboBox;
 using Syncfusion.XForms.iOS.TextInputLayout;
 using Syncfusion.XForms.iOS.Core;
-using  Syncfusion.XForms.iOS.Graphics;
 using Syncfusion.XForms.iOS.Border;
 using Syncfusion.XForms.iOS.Buttons;
 using System;
