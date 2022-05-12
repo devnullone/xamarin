@@ -1,12 +1,9 @@
-﻿using Android.Content.Res;
-using System;
+﻿using System;
 using xamarin.Auth;
 using xamarin.Validators;
 using xamarin.Validators.Rules;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
-using xamarin.Views;
 
 namespace xamarin.ViewModels
 {

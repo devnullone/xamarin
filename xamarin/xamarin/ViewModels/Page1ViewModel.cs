@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using xamarin.Auth;
 
 namespace xamarin.ViewModels
@@ -18,7 +15,7 @@ namespace xamarin.ViewModels
             var isAuth = DependencyService.Resolve<IFirebaseAuthentication>();
             if (!isAuth.IsLoggedIn())
             {
-                await Xamarin.Forms.Shell.Current.GoToAsync("//LoginPage");
+                await Shell.Current.GoToAsync("//LoginPage");
             }
         }
     }
